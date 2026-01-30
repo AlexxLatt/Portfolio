@@ -19,8 +19,43 @@ require_once __DIR__ . '/inc/handlers-shortcode.php';
 //Регистрация и отображение таблицы "Заказы"
 require_once __DIR__ . '/inc/orders-page.php';
 
+//Регистрация скриптов с ajax(wp_localize_script)
+function enqueue_my_custom_scripts() {
+
+    wp_register_script('xlsx-lib', 'https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js', array(), '0.18.5', true);
+
+  
+    wp_register_script(
+        'search-logic', 
+        get_template_directory_uri() . '/assets/js/homepage.js', 
+        array('jquery', 'xlsx-lib'), // указываем зависимости
+        '1.0', 
+        true 
+    );
+
+   
+    wp_localize_script('search-logic', 'myAjaxData', array(
+        'url'      => admin_url('admin-ajax.php'),
+        'nonce'    => wp_create_nonce('product_search_nonce'),
+        'themeUri' => get_template_directory_uri()
+    ));
+
+    
+    if (is_page_template('homepage.php')) {
+        wp_enqueue_script('search-logic');
+    }
+}
+
+add_action('wp_enqueue_scripts', 'enqueue_my_custom_scripts');
+
+
 //Новый кастомный код ========================================== (конец)
 
+
+
+
+
+add_action('wp_enqueue_scripts', 'enqueue_my_scripts');
 
 
 add_action('admin_post_submit_custom_order', 'handle_custom_order');

@@ -133,12 +133,11 @@ if ($result !== false) {
     
     $headers = [
         'Content-Type: text/html; charset=UTF-8',
-        'From: ' . $site_name . ' <info@megaatom.com>'
+        'From: ' . $site_name . ' <my@email.com>'
     ];
 
-    wp_mail("info@megaatom.com", $subject, $message, $headers);
+    wp_mail("my@email.com", $subject, $message, $headers);
     wp_mail($email, $subjectUser, $messageUser, $headers);
-    wp_mail("a@itgrade.ru", $subject, $message, $headers);
 
     // Очищаем куки
     setcookie('simple_cart', '', time() - 3600, '/');
