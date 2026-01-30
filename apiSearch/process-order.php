@@ -135,7 +135,7 @@ if ($result !== false) {
         'Content-Type: text/html; charset=UTF-8',
         'From: ' . $site_name . ' <my@email.com>'
     ];
-
+    //Отправка почты
     wp_mail("my@email.com", $subject, $message, $headers);
     wp_mail($email, $subjectUser, $messageUser, $headers);
 

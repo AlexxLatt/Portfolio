@@ -799,5 +799,5 @@ document.addEventListener('click', function(e) {
 
     const wb = XLSX.utils.book_new();
     XLSX.utils.book_append_sheet(wb, ws, "Товары");
-    XLSX.writeFile(wb, "megaatom_товары.xlsx");
+    XLSX.writeFile(wb, "site_товары.xlsx");
 });
