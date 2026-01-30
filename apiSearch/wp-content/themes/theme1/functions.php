@@ -3,9 +3,22 @@
 
 
 //Новый кастомный код ==========================================
-require_once get_template_directory() . '/inc/product-search.php';
 
-require_once get_template_directory() . '/inc/orders-page.php';
+// Настройки валюты и наценки
+require_once __DIR__ . '/inc/currency-settings.php';
+
+// Работа с внешними API
+require_once __DIR__ . '/inc/api-service.php';
+
+// Генерация безопасного HTML
+require_once __DIR__ . '/inc/html-generator.php';
+
+// AJAX обработчики и шорткод
+require_once __DIR__ . '/inc/handlers-shortcode.php';
+
+//Регистрация и отображение таблицы "Заказы"
+require_once __DIR__ . '/inc/orders-page.php';
+
 //Новый кастомный код ========================================== (конец)
 
 
